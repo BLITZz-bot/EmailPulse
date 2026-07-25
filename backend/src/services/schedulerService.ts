@@ -16,6 +16,18 @@ export async function scheduleEmails(input: ScheduleEmailInput) {
   const jobs = [];
   const { delayBetweenEmailsMs = 2000 } = input;
 
+  // Ensure user record exists in DB to prevent foreign key constraint failure
+  await prisma.user.upsert({
+    where: { id: input.userId },
+    update: {},
+    create: {
+      id: input.userId,
+      googleId: input.userId,
+      email: input.sender,
+      name: 'User',
+    },
+  });
+
   for (let i = 0; i < input.recipients.length; i++) {
     const recipient = input.recipients[i];
 
