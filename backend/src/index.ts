@@ -10,6 +10,11 @@ import { startEmailWorker } from './workers/emailWorker';
 
 const app = express();
 
+// Trust proxy for production cloud platforms (Render/Vercel)
+if (env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+}
+
 // Middleware
 app.use(cors({ origin: env.FRONTEND_URL, credentials: true }));
 app.use(express.json());
@@ -18,7 +23,12 @@ app.use(
     secret: env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: env.NODE_ENV === 'production', httpOnly: true, maxAge: 24 * 60 * 60 * 1000 },
+    cookie: {
+      secure: env.NODE_ENV === 'production',
+      sameSite: env.NODE_ENV === 'production' ? 'none' : 'lax',
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000,
+    },
   })
 );
 
