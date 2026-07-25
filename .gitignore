@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Builds
+dist/
+.next/
+out/
+build/
+
+# Environment Variables
+.env
+.env.local
+.env.production
+
+# System / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Internal Specs / Plan Files
+Backend PLAN.md
+justformyref.md
+PROGRESS.md
+PROJECT_BRIEF.md
