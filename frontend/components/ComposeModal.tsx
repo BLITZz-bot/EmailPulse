@@ -39,7 +39,7 @@ export default function ComposeModal({ isOpen, onClose, onSuccess, initialSender
     Papa.parse(file, {
       complete: (results) => {
         const foundEmails: string[] = [];
-        results.data.forEach((row: any) => {
+        results.data.forEach((row: unknown) => {
           const rowStr = Array.isArray(row) ? row.join(' ') : JSON.stringify(row);
           const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
           const matches = rowStr.match(emailRegex);
@@ -88,8 +88,9 @@ export default function ComposeModal({ isOpen, onClose, onSuccess, initialSender
       setBody('');
       setRecipientsText('');
       setParsedEmails([]);
-    } catch (err: any) {
-      setError(err.response?.data?.error || 'Failed to schedule emails.');
+    } catch (err: unknown) {
+      const errorMsg = (err as { response?: { data?: { error?: string } } })?.response?.data?.error;
+      setError(errorMsg || 'Failed to schedule emails.');
     } finally {
       setLoading(false);
     }

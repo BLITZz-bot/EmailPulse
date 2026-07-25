@@ -23,7 +23,7 @@ export default function ScheduledTable({ emails, isLoading, onCancel }: Schedule
       <div className="bg-slate-900 border border-slate-800 rounded-xl p-12 text-center">
         <div className="text-4xl mb-3">📭</div>
         <h3 className="text-lg font-semibold text-white">No Scheduled Emails</h3>
-        <p className="text-sm text-slate-400 mt-1">Click "Compose Email" to schedule your first cold email campaign.</p>
+        <p className="text-sm text-slate-400 mt-1">Click &quot;Compose Email&quot; to schedule your first cold email campaign.</p>
       </div>
     );
   }
