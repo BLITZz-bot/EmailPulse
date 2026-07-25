@@ -23,7 +23,7 @@ export default function LoginPage() {
         </div>
 
         <h1 className="text-2xl font-extrabold text-white tracking-tight">Welcome to Email Pulse</h1>
-        <p className="text-xs text-slate-400 mt-1 mb-8">ReachInbox Full-stack Cold Email Scheduling Platform</p>
+        <p className="text-xs text-slate-400 mt-1 mb-8">bharatha01's Cold Email Scheduling Platform</p>
 
         {/* Google OAuth Login Button */}
         <button
